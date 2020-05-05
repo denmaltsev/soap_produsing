@@ -1,0 +1,9 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:usr="http://home.ru/springsoap/entity">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <usr:getUserRequest>
+            <usr:name>user</usr:name>
+        </usr:getUserRequest>
+    </soapenv:Body>
+</soapenv:Envelope>

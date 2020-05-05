@@ -1,0 +1,68 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://home.ru/springsoap/entity"
+           targetNamespace="http://home.ru/springsoap/entity" elementFormDefault="qualified">
+
+    <xs:element name="getUserRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getUserResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="status" type="xs:string"/>
+                <xs:choice>
+                    <xs:element name="user" type="tns:userType"/>
+                    <xs:element name="errors" type="tns:errorListType"/>
+                </xs:choice>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getUserListRequest">
+        <xs:complexType>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getUserListResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="status" type="xs:string"/>
+                <xs:choice>
+                    <xs:element name="userList" type="tns:userListType"/>
+                    <xs:element name="errors" type="tns:errorListType"/>
+                </xs:choice>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="userType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="age" type="xs:int"/>
+            <xs:element name="profession" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="userListType">
+        <xs:sequence>
+            <xs:element name="user" type="tns:userType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="errorListType">
+        <xs:sequence>
+            <xs:element name="error" type="tns:errorType"  maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="errorType">
+        <xs:sequence>
+            <xs:element name="code" type="xs:string"/>
+            <xs:element name="message" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
